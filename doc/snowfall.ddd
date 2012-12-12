@@ -1,0 +1,10 @@
+import Snowfall
+
+// Set a global color to dark blue
+clear_color 0, 0, 0.2, 1
+
+// Add wind from the right
+snowwind -0.6
+
+// Apply snowfall effect
+snowfall 2.0, 6.0, 10000

@@ -1,0 +1,36 @@
+// ****************************************************************************
+//  snowfall.xl                                                     Tao project
+// ****************************************************************************
+// 
+//   File Description:
+// 
+//    Create a snowfall effect.
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// ****************************************************************************
+// This document is released under the GNU General Public License.
+// See http://www.gnu.org/copyleft/gpl.html and Matthew 25:22 for details
+//  (C) 2012 Baptiste Soulisse <soulisse.baptiste@taodyne.com>
+//  (C) 2012 Taodyne SAS
+// ****************************************************************************
+
+module_description
+    id "0af91628-5e55-4376-8543-91f12aee5cb7"
+    name "Snowfall"
+    description "Allow to add a snowfall effect into a presentation."
+    import_name "Snowfall"
+    author "Taodyne SAS"
+    website "http://www.taodyne.com"
+    version 1.0
+
+module_description "fr",
+    name "Neige tombante"
+    description "Permet d'ajouter un effet de neige tombante dans une présentation."
+
+import "snowfall2.xl.crypt"

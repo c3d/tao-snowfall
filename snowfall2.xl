@@ -1,0 +1,147 @@
+// ****************************************************************************
+//  snowfall2.xl                                                    Tao project
+// ****************************************************************************
+// 
+//   File Description:
+// 
+//    Implement snowfall effect.
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// ****************************************************************************
+// This document is released under the GNU General Public License.
+// See http://www.gnu.org/copyleft/gpl.html and Matthew 25:22 for details
+//  (C) 2012 Baptiste Soulisse <soulisse.baptiste@taodyne.com>
+//  (C) 2012 Taodyne SAS
+// ****************************************************************************
+
+import Animate
+import PointCloud
+
+license_check -> check_impress_or_license "Snowfall 1.0"
+
+// Adding this module's images/ directory to the image: search path
+// for the current document
+add_search_path "image:", module_dir & "/images"
+
+// ============================================================================
+//
+//                               GLOBAL SETTINGS
+//
+// ============================================================================
+
+SNOW_OFFSET -> 1500.0     // Snowfall offset
+SNOW_POSITION_1 -> 0.0    // Position of first set of snowcloud
+SNOW_POSITION_2 -> 1500.0 // Position of second set of snowcloud
+
+SNOW_SPEED -> 2.0   // Snowflake velocity
+SNOW_NUMBER -> 7000 // Snowflake number
+SNOW_SIZE -> 6.0    // Snowflake size
+SNOW_WIND -> 0.0    // Snow wind
+
+// Snowflake image
+SNOWFLAKE -> "image:snowflake.png"
+
+
+// ============================================================================
+//
+//                                  FUNCTIONS
+//
+// ============================================================================
+
+snowflake T:text ->
+// ----------------------------------------------------------------------------
+//   Change the image used as snowflake
+// ----------------------------------------------------------------------------
+    SNOWFLAKE := T
+
+
+snowwind S:real ->
+// ----------------------------------------------------------------------------
+//   Add wind to the snowfall effect
+// ----------------------------------------------------------------------------
+    SNOW_WIND := S
+    if S < -1.0 then
+        SNOW_WIND := -1.0
+    if S > 1.0 then
+        SNOW_WIND := 1.0
+
+
+snowfall ->
+// ----------------------------------------------------------------------------
+//   Shortcut to create easily a nice snowfall effect
+// ----------------------------------------------------------------------------
+    snowfall 2.0, 6.0, 7000
+
+
+snowfall V:real, S:real, N:integer ->
+// ----------------------------------------------------------------------------
+//   Create the snowfall effect
+// ----------------------------------------------------------------------------
+    locally
+        license_check
+        if (S >= 0) and (V >= 0) and (N >= 0) then
+            SNOW_SPEED := V
+            SNOW_NUMBER := N
+            SNOW_SIZE := S
+            rotatez 80 * SNOW_WIND
+            color "white"
+            texture SNOWFLAKE
+            blend_function "SRC_ALPHA", "ONE"
+            disable_depth_test
+            locally
+                translatey SNOW_POSITION_1
+                SNOW_POSITION_1 := SNOW_POSITION_1 - SNOW_SPEED
+                page_time
+                if SNOW_POSITION_1 < -SNOW_OFFSET then
+                    SNOW_POSITION_1 := SNOW_OFFSET
+                snow_clouds
+            locally
+                translatey SNOW_POSITION_2
+                SNOW_POSITION_2 := SNOW_POSITION_2 - SNOW_SPEED
+                page_time
+                if SNOW_POSITION_2 < -SNOW_OFFSET then
+                    SNOW_POSITION_2 := SNOW_OFFSET
+                snow_clouds
+
+
+// ============================================================================
+//
+//                                   PRIVATE
+//
+// ============================================================================
+
+snow_clouds ->
+// ----------------------------------------------------------------------------
+//   Create differents sorts of snowcloud
+// ----------------------------------------------------------------------------
+    locally
+        rotatey 5 + SNOW_SPEED * sin (1/5.0 * page_time)
+        snow_cloud SNOW_SIZE / 2.0
+    locally
+        rotatey 10 + 2 * SNOW_SPEED * sin (1/5.0 * page_time)
+        snow_cloud SNOW_SIZE
+    locally
+        translatez 75
+        snow_cloud SNOW_SIZE * 1.5
+    locally
+        translatez 150
+        snow_cloud SNOW_SIZE * 2.0
+
+
+snow_cloud Size:real ->
+// ----------------------------------------------------------------------------
+//   Create a snowcloud of a given size
+// ----------------------------------------------------------------------------
+    locally
+        scale 2 * SNOW_OFFSET, SNOW_OFFSET, SNOW_OFFSET
+        translate -0.5, -0.5, 0.0
+        cloud_random "Snow" & text Size, integer (SNOW_NUMBER / Size)
+        cloud_point_size "Snow" & text Size, Size
+        cloud_point_sprites "Snow" & text Size, true
+        cloud "Snow" & text Size
