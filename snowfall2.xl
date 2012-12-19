@@ -27,7 +27,7 @@ license_check -> check_impress_or_license "Snowfall 1.0"
 
 // Adding this module's images/ directory to the image: search path
 // for the current document
-add_search_path "Snowfall:", module_dir & "/images"
+add_search_path "image:", module_dir & "/images"
 
 // ============================================================================
 //
@@ -45,7 +45,7 @@ SNOW_SIZE -> 6.0    // Snowflake size
 SNOW_WIND -> 0.0    // Snow wind
 
 // Snowflake image
-SNOWFLAKE -> "Snowfall:snowflake.png"
+SNOWFLAKE -> "image:snowflake.png"
 
 
 // ============================================================================
@@ -108,53 +108,6 @@ snowfall V:real, S:real, N:integer ->
                 if SNOW_POSITION_2 < -SNOW_OFFSET then
                     SNOW_POSITION_2 := SNOW_OFFSET
                 snow_clouds
-
-
-snowpack -> snowpack 0, 75-540, 1920, 150, 10
-// ----------------------------------------------------------------------------
-//   Default values for snowpack
-// ----------------------------------------------------------------------------
-
-
-snowpack X:integer, Y:integer, W:integer, H:integer, N:integer ->
-// ----------------------------------------------------------------------------
-//   Create a snow pack
-// ----------------------------------------------------------------------------
-    data snowpack_height
-    snowpack_column -> 0
-    snowpack_width -> 960
-    
-    locally
-        snowpack_width := W/2
-        init_snowpack_height with -snowpack_width..snowpack_width
-        snowpack_column := 0
-        init_snowpack_height C:integer ->
-            snowpack_column := C
-            snowpack_height[snowpack_column] := 0+0
-
-    locally
-        color "white"
-        canvas "snowpack", W, H,
-            time
-            color "white", 0.3
-            blend_function "SRC_ALPHA", "ONE"
-            disable_depth_test
-            translatey -H/2
-            add_snowflake with 1..N
-            add_snowflake N:integer ->
-                snowpack_column := snowpack_column + random(-50,50) - snowpack_column/250
-                if snowpack_column > snowpack_width then
-                    snowpack_column := snowpack_width
-                if snowpack_column < -snowpack_width then
-                    snowpack_column := -snowpack_width
-                snowpack_height_increase snowpack_height[snowpack_column]
-            snowpack_height_increase Height:integer ->
-                Height := Height + 1
-                image snowpack_column, 0.4 * Height, 0.03, 0.03, "Snowfall:SnowFlake.png"
-        rectangle X, Y, W, H
-
-
-
 
 
 // ============================================================================
