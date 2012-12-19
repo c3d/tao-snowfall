@@ -134,7 +134,7 @@ snowpack X:integer, Y:integer, W:integer, H:integer, N:integer ->
 
     locally
         color "white"
-        canvas W, H,
+        canvas "snowpack", W, H,
             time
             color "white", 0.3
             blend_function "SRC_ALPHA", "ONE"
