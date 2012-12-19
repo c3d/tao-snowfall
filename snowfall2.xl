@@ -110,6 +110,53 @@ snowfall V:real, S:real, N:integer ->
                 snow_clouds
 
 
+snowpack -> snowpack 0, 75-540, 1920, 150, 10
+// ----------------------------------------------------------------------------
+//   Default values for snowpack
+// ----------------------------------------------------------------------------
+
+
+snowpack X:integer, Y:integer, W:integer, H:integer, N:integer ->
+// ----------------------------------------------------------------------------
+//   Create a snow pack
+// ----------------------------------------------------------------------------
+    data snowpack_height
+    snowpack_column -> 0
+    snowpack_width -> 960
+    
+    locally
+        snowpack_width := W/2
+        init_snowpack_height with -snowpack_width..snowpack_width
+        snowpack_column := 0
+        init_snowpack_height C:integer ->
+            snowpack_column := C
+            snowpack_height[snowpack_column] := 0+0
+
+    locally
+        color "white"
+        canvas W, H,
+            time
+            color "white", 0.3
+            blend_function "SRC_ALPHA", "ONE"
+            disable_depth_test
+            translatey -H/2
+            add_snowflake with 1..N
+            add_snowflake N:integer ->
+                snowpack_column := snowpack_column + random(-50,50) - snowpack_column/250
+                if snowpack_column > snowpack_width then
+                    snowpack_column := snowpack_width
+                if snowpack_column < -snowpack_width then
+                    snowpack_column := -snowpack_width
+                snowpack_height_increase snowpack_height[snowpack_column]
+            snowpack_height_increase Height:integer ->
+                Height := Height + 1
+                image snowpack_column, 0.4 * Height, 0.03, 0.03, "SnowFlake:SnowFlake.png"
+        rectangle X, Y, W, H
+
+
+
+
+
 // ============================================================================
 //
 //                                   PRIVATE
