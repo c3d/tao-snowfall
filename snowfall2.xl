@@ -27,7 +27,7 @@ license_check -> check_impress_or_license "Snowfall 1.0"
 
 // Adding this module's images/ directory to the image: search path
 // for the current document
-add_search_path "image:", module_dir & "/images"
+add_search_path "SnowFlake:", module_dir & "/images"
 
 // ============================================================================
 //
@@ -45,7 +45,7 @@ SNOW_SIZE -> 6.0    // Snowflake size
 SNOW_WIND -> 0.0    // Snow wind
 
 // Snowflake image
-SNOWFLAKE -> "image:snowflake.png"
+SNOWFLAKE -> "SnowFlake:snowflake.png"
 
 
 // ============================================================================
