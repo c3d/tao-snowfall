@@ -23,7 +23,7 @@
 import Animate
 import PointCloud
 
-license_check -> check_impress_or_license "Snowfall 1.001"
+license_check -> check_impress_or_license "Snowfall 1.0"
 
 // Adding this module's images/ directory to the image: search path
 // for the current document
