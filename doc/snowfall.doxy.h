@@ -2,7 +2,7 @@
  * @~english
  * @taomoduledescription{Snowfall, Snowfall}
  *
- * Snowfall.
+ * <tt>import Snowfall</tt> - Snowfall effect.\n
  *
  * This module allows to add a nice snowfall effect in your presentations.
  *
@@ -18,7 +18,7 @@
  * @~french
  * @taomoduledescription{Snowfall, Neige tombante}
  *
- * Neige tombante.
+ * <tt>import Snowfall</tt> - Effet de neige tombante.\n
  *
  * Ce module permet d'ajouter un joli effet de neige tombante dans vos présentations.
  *
