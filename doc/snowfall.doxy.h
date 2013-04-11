@@ -1,7 +1,8 @@
 ﻿/**
  * @~english
  * @taomoduledescription{Snowfall, Snowfall}
- * <tt>import Snowfall</tt> - Snowfall effect.@n
+ *
+ * <tt>import Snowfall</tt> - Snowfall effect.\n
  *
  * This module allows to add a nice snowfall effect in your presentations.
  *
@@ -16,7 +17,8 @@
  *
  * @~french
  * @taomoduledescription{Snowfall, Neige tombante}
- * <tt>import Snowfall</tt> - Effet de neige tombante.@n
+ *
+ * <tt>import Snowfall</tt> - Effet de neige tombante.\n
  *
  * Ce module permet d'ajouter un joli effet de neige tombante dans vos présentations.
  *
@@ -60,7 +62,7 @@ snowfall(V:real, S:real, N:integer);
  *
  * This is shortcut to the following code:
  @code
- snowfall 2.0, 6.0, 7000
+ snowfall 2.0, 6.0, 7000.0
  @endcode
  *
  * @~french
@@ -70,7 +72,7 @@ snowfall(V:real, S:real, N:integer);
  *
  * Cette fonction est un raccourci au code suivant:
 @code
-snowfall 2.0, 6.0, 7000
+snowfall 2.0, 6.0, 7000.0
 @endcode
  *
  */
@@ -115,7 +117,7 @@ snowflake(T:text);
  *
  * @param S Force du vent, entre -1.0 et 1.0.
  */
-snowwind(S:real);
+snowwind(S:text);
 
 /**
  * @}
