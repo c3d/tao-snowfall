@@ -23,6 +23,8 @@
 import Animate
 import PointCloud
 
+license_check -> check_impress_or_license "Snowfall 1.001"
+
 // Adding this module's images/ directory to the image: search path
 // for the current document
 add_search_path "Snowfall:", module_dir & "/images"
@@ -82,6 +84,7 @@ snowfall V:real, S:real, N:integer ->
 //   Create the snowfall effect
 // ----------------------------------------------------------------------------
     locally
+        license_check
         if (S >= 0) and (V >= 0) and (N >= 0) then
             SNOW_SPEED := V
             SNOW_NUMBER := N
