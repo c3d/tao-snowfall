@@ -148,6 +148,7 @@ snowpack X:integer, Y:integer, W:integer, H:integer, N:integer ->
             snowpack_height_increase Height:integer ->
                 Height := Height + 1
                 image snowpack_column, 0.4 * Height, 0.03, 0.03, "Snowfall:SnowFlake.png"
+            
         rectangle X, Y, W, H
 
 
