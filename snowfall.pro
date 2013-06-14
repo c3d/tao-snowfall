@@ -37,9 +37,6 @@ INSTALLS    -= thismod_bin
 
 HEADERS += \
 
-LICENSE_FILES = snowfall.taokey.notsigned
-include(../licenses.pri)
-
 QMAKE_SUBSTITUTES = doc/Doxyfile.in
 DOXYFILE = doc/Doxyfile
 DOXYLANG = en,fr
