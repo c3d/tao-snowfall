@@ -60,7 +60,7 @@ snowfall(V:real, S:real, N:integer);
  *
  * This is shortcut to the following code:
  @code
- snowfall 2.0, 6.0, 7000.0
+ snowfall 2.0, 6.0, 7000
  @endcode
  *
  * @~french
@@ -70,7 +70,7 @@ snowfall(V:real, S:real, N:integer);
  *
  * Cette fonction est un raccourci au code suivant:
 @code
-snowfall 2.0, 6.0, 7000.0
+snowfall 2.0, 6.0, 7000
 @endcode
  *
  */
@@ -115,7 +115,7 @@ snowflake(T:text);
  *
  * @param S Force du vent, entre -1.0 et 1.0.
  */
-snowwind(S:text);
+snowwind(S:real);
 
 /**
  * @}
