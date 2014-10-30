@@ -19,8 +19,7 @@ MODINSTDIR = snowfall
 
 include(../modules.pri)
 
-OTHER_FILES = snowfall.xl \
-    snowfall2.xl \
+OTHER_FILES = snowfall.xl 
 
 PICTURES = \
     images/snowflake.png \
@@ -29,8 +28,6 @@ PICTURES = \
 pics.path  = $$MODINSTPATH/images
 pics.files = $$PICTURES
 
-CRYPT_XL_SOURCES = snowfall2.xl
-include(../crypt_xl.pri)
 
 INSTALLS    += thismod_icon pics
 INSTALLS    -= thismod_bin
